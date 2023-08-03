@@ -1,0 +1,12 @@
+{"name":"net-transport","vers":"0.1.0","deps":[
+    {
+        "name": "zmq",
+        "req": "=0.10.0",
+        "features": [],
+        "optional": false,
+        "default_features": true,
+        "target": null,
+        "kind": "normal",
+        "registry": "https://github.com/rust-lang/crates.io-index"
+    }
+],"cksum":null,"features":{},"yanked":false}
