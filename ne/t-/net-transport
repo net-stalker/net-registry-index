@@ -8,5 +8,25 @@
         "target": null,
         "kind": "normal",
         "registry": "https://github.com/rust-lang/crates.io-index"
+    },
+    {
+        "name": "log",
+        "req": "=0.4.17",
+        "features": [],
+        "optional": false,
+        "default_features": true,
+        "target": null,
+        "kind": "normal",
+        "registry": "https://github.com/rust-lang/crates.io-index"
+    },
+    {
+        "name": "log",
+        "req": "=1.8.1",
+        "features": [],
+        "optional": false,
+        "default_features": true,
+        "target": null,
+        "kind": "normal",
+        "registry": "https://github.com/rust-lang/crates.io-index"
     }
 ],"cksum":null,"features":{},"yanked":false}
