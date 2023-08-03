@@ -29,4 +29,7 @@
         "kind": "normal",
         "registry": "https://github.com/rust-lang/crates.io-index"
     }
-],"cksum":null,"features":{},"yanked":false}
+],
+"cksum":"0c941670ff893198b7335737514f7d41cade0460dd2c7f82460acef7ca201d8f",
+"features":{},
+"yanked":false}
