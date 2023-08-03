@@ -1,3 +1,3 @@
 {
-    "dl": "https://github.com/net-stalker/net-registry/crates/{crate}/{version}/download/{crate}-{version}.crate"
+    "dl": "ssh://github.com/net-stalker/net-registry/crates/{crate}/{version}/download/{crate}-{version}.crate"
 }
