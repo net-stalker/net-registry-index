@@ -1,0 +1,1 @@
+{"name":"net-proto-api","vers":"0.1.0","deps":[{"name":"ion-rs","req":"0.18.1","features":[],"optional":false,"default_features":false,"target":null,"kind":"normal","registry":"https://github.com/rust-lang/crates.io-index"}],"cksum":"30db72649e9e5e14d0fa021733a2dade66860383c94888437ebf09e776d7ca50","features":{"ion-text":[],"ion-binary":[],"default":["ion-text"]},"yanked":false}
