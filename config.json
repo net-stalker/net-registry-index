@@ -1,5 +1,5 @@
 {
     "dl": "https://raw.github.com/net-stalker/net-registry/develop/crates/{crate}/{version}/download/{crate}-{version}.crate",
-    "api": "https://raw.github.com/net-stalker/net-registry/develop",
+    "api": "https://raw.github.com/net-stalker/net-registry-index/develop/api",
     "auth-required": true
 }
