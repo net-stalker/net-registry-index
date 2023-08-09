@@ -1,4 +1,4 @@
 {
-    "dl": "https://github.com/net-stalker/net-registry/raw/develop/crates/{crate}/{version}/download/{crate}-{version}.crate",
+    "dl": "https://raw.github.com/net-stalker/net-registry/develop/crates/{crate}/{version}/download/{crate}-{version}.crate",
     "auth-required": true
 }
