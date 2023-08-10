@@ -35,6 +35,5 @@
   ],
   "cksum": "98a9e71cafdac4becacd23a6293e4b8b3b672826234efdb51ece7b33d1de2637",
   "features": {},
-  "yanked": false,
-  "proc-macro": true
+  "yanked": false
 }
