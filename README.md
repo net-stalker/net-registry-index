@@ -35,3 +35,9 @@ After that you will be prompted to write your username and password to the regis
 `$HOME/.git-credentials` and all the packages will be dowloaded from the registry.
 
 ***Happy coding!***
+
+
+## Authors
+
+- [Illia Stetsenko(net-illia-stetsenko)](https://github.com/net-illia-stetsenko)
+
