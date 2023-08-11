@@ -1,7 +1,7 @@
 
 # net-registry-index
 
-#### NetStalker's private rust package registry for maintaining organization's crates.
+#### Net Stalker's private rust package registry for maintaining organization's crates.
 
 How to download packages from this registry?
 
