@@ -42,8 +42,9 @@ def update_or_create_index(metainfo):
                 print(f"{e}")
             dir_name = str(child_dir)
         file_path = os.path.join(dir_name, name)
-        with open(file_path, "w") as json_file:
+        with open(file_path, "a") as json_file:
             json.dump(json.loads(meta[1]), json_file, separators=(",", ":"))
+            json_file.write("\n")
 
 def move_crate_binaries(metainfo):
     crates = os.path.join(registry, 'crates')
