@@ -1,29 +1,28 @@
+#!/usr/bin/env python
+import sys
 import os
 import subprocess
 import json
 
-packages = os.environ.get("PACKAGES_DIR")
-registry = os.environ.get("REGISTRY")
-
-def cargo_index(name):
+def cargo_index(packages, name):
     path = str(os.path.join(packages, name))
     cmd = 'cargo index metadata --crate ' + path + ' --index-url url | grep "{*}"'
     return cmd
 
-def get_metainfo(directory):
+def get_metainfo(packages):
     ans = {}
-    files = os.listdir(directory)
-    for file in files:
-        if not file.endswith(".crate"):
+    files = os.listdir(packages)
+    for package in os.listdir(packages):
+        if not package.endswith(".crate"):
             continue
-        cargo = cargo_index(file)
+        cargo = cargo_index(packages, package)
         metainfo = subprocess.run(cargo, shell=True, capture_output=True, text=True).stdout
         json_metainfo = json.loads(metainfo)
         name = json_metainfo['name']
-        ans[name] = [file, metainfo]
+        ans[name] = [package, metainfo]
     return ans
 
-def update_or_create_index(metainfo):
+def update_or_create_index(metainfo, registry):
     for name, meta in metainfo.items():
         dir_name = ""
         if len(name) <= 3:
@@ -46,7 +45,7 @@ def update_or_create_index(metainfo):
             json.dump(json.loads(meta[1]), json_file, separators=(",", ":"))
             json_file.write("\n")
 
-def move_crate_binaries(metainfo):
+def move_crate_binaries(packages, metainfo, registry):
     crates = os.path.join(registry, 'crates')
     for name, meta in metainfo.items():
         crate = os.path.join(crates, name)
@@ -66,8 +65,16 @@ def move_crate_binaries(metainfo):
         cmd = f'mv {target} {str(crate)}'
         subprocess.run(cmd, shell=True)
     
+def main():
+    args = sys.argv[1:]
+    if len(args) != 2:
+        raise RuntimeError("wrong number of args. 2 is required")
+    packages = args[0]
+    registry = args[1]
 
-metainfo = get_metainfo(packages)
-update_or_create_index(metainfo)
-move_crate_binaries(metainfo)
+    metainfo = get_metainfo(packages)
+    update_or_create_index(metainfo, registry)
+    move_crate_binaries(packages, metainfo, registry)
 
+if __name__ == "__main__":
+    main()

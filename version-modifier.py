@@ -1,10 +1,11 @@
+#!/usr/bin/env python
+import sys
 import os
 import toml
 import re
 
 commit_hash = str(os.environ.get("SHORT_COMMIT_HASH"))
 manifest_dir = str(os.environ.get("CARGO_MANIFEST_DIR"))
-
 
 def modify_cargo_toml_version(file_path, commit_hash):
     with open(file_path, 'r') as f:
@@ -42,6 +43,15 @@ def get_workspace_members_directories(root_directory):
     ))
     
     
+def main():
+    args = sys.argv[1:]
+    if len(args) != 2:
+        raise RuntimeError("wrong number of args. 2 is required")
+    manifest_dir = args[0]
+    commit_hash = args[1]
 
-workspace_members = get_workspace_members_directories(manifest_dir)
-modify_members_versions(workspace_members, commit_hash)
+    workspace_members = get_workspace_members_directories(manifest_dir)
+    modify_members_versions(workspace_members, commit_hash)
+
+if __name__ == "__main__":
+    main()
