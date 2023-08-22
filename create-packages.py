@@ -29,7 +29,7 @@ def create_packages(ignored_packages):
 def main():
     args = sys.argv[1:]
     if len(args) != 1:
-        raise RuntimeError("wrong number of args. Need to be 1")
+        raise RuntimeError("wrong number of args. 1 is required")
     manifest_dir = args[0]
     ignored_packages = get_registry_ignore(manifest_dir)
     create_packages(ignored_packages)
