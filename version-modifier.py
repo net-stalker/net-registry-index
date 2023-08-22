@@ -5,7 +5,6 @@ import re
 commit_hash = str(os.environ.get("SHORT_COMMIT_HASH"))
 manifest_dir = str(os.environ.get("CARGO_MANIFEST_DIR"))
 
-
 def modify_cargo_toml_version(file_path, commit_hash):
     with open(file_path, 'r') as f:
         cargo_toml = toml.load(f)

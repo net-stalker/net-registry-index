@@ -10,7 +10,7 @@ def cargo_index(name):
     cmd = 'cargo index metadata --crate ' + path + ' --index-url url | grep "{*}"'
     return cmd
 
-def get_metainfo(directory):
+def get_metainfo(directory, ignore_packages):
     ans = {}
     files = os.listdir(directory)
     for file in files:
@@ -66,7 +66,7 @@ def move_crate_binaries(metainfo):
         cmd = f'mv {target} {str(crate)}'
         subprocess.run(cmd, shell=True)
     
-
+ignore_packages = get_registry_ignore()
 metainfo = get_metainfo(packages)
 update_or_create_index(metainfo)
 move_crate_binaries(metainfo)
