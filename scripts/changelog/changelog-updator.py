@@ -1,38 +1,29 @@
 #!/usr/bin/env python
 import os
-import subprocess
-import toml
 import sys
+from datetime import datetime
 
-def get_registry_ignore(manifest_dir):
-    path_reg_ignore = os.path.join(manifest_dir, '.registryignore')
-    res = []
-    try:
-        with open(path_reg_ignore, 'r') as file_reg_ignore:
-            for line in file_reg_ignore:
-                line = line.strip()
-                res.append(line)
-    except:
-        print(f'')
-    return res
-
-def create_packages(ignored_packages):
-    cmd = "cargo package --allow-dirty --workspace"
-    old_len = len(cmd)
-    for package in ignored_packages:
-        cmd += ' --exclude ' + package
-    if old_len == len(cmd):
-        cmd = "cargo package --allow-dirty"
-    subprocess.run(cmd, shell=True)
+def update_changelog(manifest_dir, git_tag):
+    current_date = datetime.now().date().strftime('%Y-%m-%d')
+    changelog_dir = os.path.join(manifest_dir, 'CHANGELOG.md')
+    old_dir = os.path.join(manifest_dir, 'old.md')
+    os.rename('CHANGELOG.md', 'old.md')
+    with open(changelog_dir, 'w') as changelog:
+        with open(old_dir, 'r') as old_changelog:
+            for line in old_changelog:
+                if line == '## [Unreleased] - ReleaseDate\n':
+                    line += "\n## [" + git_tag + "] - " + current_date + "\n" 
+                changelog.write(line)
+    os.remove(old_dir)
     
 
 def main():
     args = sys.argv[1:]
-    if len(args) != 1:
-        raise RuntimeError("wrong number of args. 1 is required")
+    if len(args) != 2:
+        raise RuntimeError("wrong number of args. 2 is required")
     manifest_dir = args[0]
-    ignored_packages = get_registry_ignore(manifest_dir)
-    create_packages(ignored_packages)
+    git_tag = args[1]
+    update_changelog(manifest_dir, git_tag)
 
 if __name__ == "__main__":
     main()
