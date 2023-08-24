@@ -49,6 +49,10 @@ def get_current_version_from_changelog(manifest_dir):
 def get_a_new_tag(members_versions, current_version):
     if not all(version == members_versions[0] for version in members_versions):
         raise RuntimeError("The versions of the workspace members aren't equal")
+    
+    if current_version == '':
+        return members_versions[0]
+            
     new_version_splitted = members_versions[0].split('.')
     current_version_splitted = current_version.split('.')
     for i in range(0, len(new_version_splitted)):
