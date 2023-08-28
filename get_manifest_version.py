@@ -23,8 +23,8 @@ def filter_workspace_members_by_ignored(workspace_members, ignored_members):
 def get_current_version(manifest_dir, workspace_members):
     if len(workspace_members) == 0:
         raise RuntimeError("0 members to be published")
-    member = os.path.join(manifest_dir, workspace_members[0])[0]
-    with open(member, 'r') as f:
+    member = os.path.join(manifest_dir, workspace_members[0])
+    with open(os.path.join(member, "Cargo.toml"), 'r') as f:
         cargo_toml = toml.load(f)
         return cargo_toml['package']['version']
 
