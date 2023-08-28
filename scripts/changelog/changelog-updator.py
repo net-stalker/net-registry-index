@@ -23,12 +23,12 @@ def move_log_out_of_comments(manifest_dir):
             started_capturing_log = False
             log_container = []
             for line in old_changelog:
-                if line == '<!-- Please keep comment here to allow auto-update -->':
+                if line == '<!-- Please keep comment here to allow auto-update -->\n':
                     changelog.write(line)
                     started_capturing_log = True
                     continue
 
-                if line == '<!-- [END AUTO UPDATE] -->':
+                if line == '<!-- [END AUTO UPDATE] -->\n':
                     changelog.write(line)
                     started_capturing_log = False
                     continue
