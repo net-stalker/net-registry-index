@@ -48,7 +48,7 @@ def move_log_out_of_comments(manifest_dir):
 
 def main():
     args = sys.argv[1:]
-    if len(args) != 2:
+    if len(args) != 1:
         raise RuntimeError("wrong number of args. 1 is required")
     manifest_dir = args[0]
     move_log_out_of_comments(manifest_dir)
