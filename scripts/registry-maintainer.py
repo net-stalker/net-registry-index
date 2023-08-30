@@ -4,6 +4,7 @@ import os
 import subprocess
 import json
 
+# TODO: write unit tests here
 def cargo_index(packages, name):
     path = str(os.path.join(packages, name))
     cmd = 'cargo index metadata --crate ' + path + ' --index-url url | grep "{*}"'
