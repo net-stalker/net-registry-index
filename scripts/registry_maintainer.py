@@ -17,7 +17,7 @@ def get_metainfo(packages):
         if not package.endswith(".crate"):
             continue
         cargo = cargo_index(packages, package)
-        metainfo = subprocess.run(cargo, shell=True, capture_output=True, text=True).stdout
+        metainfo = subprocess.run(cargo, shell=True, capture_output=True, text=True, check=False).stdout
         json_metainfo = json.loads(metainfo)
         name = json_metainfo['name']
         ans[name] = [package, metainfo]

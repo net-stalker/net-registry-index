@@ -1,10 +1,13 @@
 """Module providing unit tests for core.py"""
+# pylint: disable=wrong-import-position
 import sys
 import unittest
 import os
+
 cur_dir = os.path.dirname(__file__)
 core_module_dir = os.path.join(cur_dir, '..')
 sys.path.append(core_module_dir)
+
 from core import get_registry_ignore, get_workspace_members, filter_workspace_members_by_ignored
 
 CARGO_MANIFEST_DIR = os.path.join(cur_dir, "rust-test-workspace")
