@@ -1,5 +1,6 @@
 import os
 import toml
+import unittest
 
 # TODO: write unit tests
 def get_registry_ignore(manifest_dir):
