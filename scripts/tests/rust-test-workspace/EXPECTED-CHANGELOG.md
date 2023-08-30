@@ -8,5 +8,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 <!-- [START AUTO UPDATE] -->
 <!-- Please keep comment here to allow auto-update -->
-A very important change log
 <!-- [END AUTO UPDATE] -->
+A very important change log
