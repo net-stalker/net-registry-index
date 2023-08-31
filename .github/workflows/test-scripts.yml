@@ -9,7 +9,7 @@ on:
 jobs:
 
   build:
-  
+
     runs-on: ubuntu-latest
     steps:
       - name: Check out
@@ -22,7 +22,7 @@ jobs:
 
       - name: Install Pylint
         run: |
-          pip isntall pylint
+          pip install pylint
       
       - name: Install python requirements
         run: |
