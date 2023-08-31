@@ -1,5 +1,5 @@
 """Module providing unit tests for core.py"""
-# pylint: disable=wrong-import-position
+# pylint: disable=wrong-import-position,duplicate-code
 import sys
 import unittest
 import os
@@ -14,7 +14,6 @@ CARGO_MANIFEST_DIR = os.path.join(cur_dir, "rust-test-workspace")
 
 class TestCore(unittest.TestCase):
     """Class providing unit tests for core.py"""
-
     def test_get_registry_ignore_0(self):
         """Test for get_registry_ignore with .registryignore-0 file"""
 

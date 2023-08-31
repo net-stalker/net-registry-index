@@ -1,1 +1,45 @@
 # TODO: write workflow for testing net-regsitry scripts
+name: Test python scripts
+
+on:
+  push:
+    branches: ["develop"]
+  pull_request:
+    branches: ["*"]
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install Rust
+        run: rustup toolchain install stable --profile minimal
+
+      - name: Install cargo index took
+        run: cargo install cargo-index
+
+      - name: Install Pylint, Pytest
+        run: |
+          pip install pylint pytest
+      
+      - name: Install python requirements
+        run: |
+          pip install -r scripts/requirements.txt
+
+      - name: Run Pylint
+        continue-on-error: false
+        run: |
+          pylint scripts/
+
+      - name: Run unit-tests
+        continue-on-error: false
+        run: |
+          pytest scripts/tests/
