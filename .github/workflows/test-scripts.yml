@@ -20,9 +20,9 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install Pylint
+      - name: Install Pylint, Pytest
         run: |
-          pip install pylint
+          pip install pylint pytest
       
       - name: Install python requirements
         run: |
