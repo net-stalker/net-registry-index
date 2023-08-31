@@ -14,10 +14,6 @@ CARGO_MANIFEST_DIR = os.path.join(cur_dir, "rust-test-workspace")
 
 class TestCore(unittest.TestCase):
     """Class providing unit tests for core.py"""
-    def test_failre(self):
-        """Failure test"""
-        self.assertEqual(1, 2, f"test failre")
-        
     def test_get_registry_ignore_0(self):
         """Test for get_registry_ignore with .registryignore-0 file"""
 

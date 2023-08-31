@@ -37,7 +37,7 @@ jobs:
       - name: Run Pylint
         continue-on-error: false
         run: |
-          find . -name '*.py' -exec pylint {} \;
+          pylint scripts/
 
       - name: Run unit-tests
         continue-on-error: false
