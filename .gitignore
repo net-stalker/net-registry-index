@@ -1,0 +1,4 @@
+scripts/__*/
+scripts/tests/rust-test-workspace/target/
+scripts/tests/rust-test-workspace/Cargo.lock
+.vscode/
