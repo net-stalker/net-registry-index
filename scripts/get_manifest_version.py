@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# pylint: disable=unspecified-encoding
+# pylint: disable=unspecified-encoding,duplicate-code
 """Module providing a method for getting manifest version
 in Cargo.toml of one of the manifest members using workspace members and cargo manifest direcotry"""
 import sys

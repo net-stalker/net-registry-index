@@ -9,15 +9,15 @@ from core import get_registry_ignore, get_workspace_members, filter_workspace_me
 
 def append_prerelease_to_cargo_version(file_path, commit_hash):
     """A function for appending prereleases to cargo version"""
-    with open(file_path, 'r') as f:
-        cargo_toml = toml.load(f)
+    with open(file_path, 'r') as file:
+        cargo_toml = toml.load(file)
 
     pattern = r'(-\w+)'
     prefix = re.split(pattern, cargo_toml['package']['version'], maxsplit=1)[0]
     cargo_toml['package']['version'] = prefix + '-' + commit_hash
 
-    with open(file_path, 'w') as f:
-        toml.dump(cargo_toml, f)
+    with open(file_path, 'w') as file:
+        toml.dump(cargo_toml, file)
 
     print(f"Modified version in {file_path} to {commit_hash}")
 

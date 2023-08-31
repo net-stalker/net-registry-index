@@ -49,7 +49,7 @@ def move_log_out_of_comments(manifest_dir, file_name):
                     log_container = []
 
                 changelog.write(line)
-                
+
             if not started_capturing_log and len(log_container) != 0:
                 for log_line in log_container:
                     changelog.write(log_line)

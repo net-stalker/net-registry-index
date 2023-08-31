@@ -1,5 +1,5 @@
 """Module providing unit tests for registry_maintainer.py"""
-# pylint: disable=import-error, wrong-import-position, line-too-long, unspecified-encoding
+# pylint: disable=import-error, wrong-import-position, line-too-long, unspecified-encoding,duplicate-code
 import sys
 import unittest
 import os

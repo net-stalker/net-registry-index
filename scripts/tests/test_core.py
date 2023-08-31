@@ -1,5 +1,5 @@
 """Module providing unit tests for core.py"""
-# pylint: disable=wrong-import-position
+# pylint: disable=wrong-import-position,duplicate-code
 import sys
 import unittest
 import os
