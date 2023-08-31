@@ -42,5 +42,4 @@ jobs:
       - name: Run unit-tests
         continue-on-error: false
         run: |
-          chmod +x scripts/test_runner.sh
-          ./scripts/test_runner.sh
+          pytest scripts/tests/
