@@ -1,21 +1,9 @@
 #!/usr/bin/env python
-import os
 import subprocess
-import toml
 import sys
+from core import get_registry_ignore
 
-def get_registry_ignore(manifest_dir):
-    path_reg_ignore = os.path.join(manifest_dir, '.registryignore')
-    res = []
-    try:
-        with open(path_reg_ignore, 'r') as file_reg_ignore:
-            for line in file_reg_ignore:
-                line = line.strip()
-                res.append(line)
-    except:
-        print(f'')
-    return res
-
+# TODO: import core module
 def create_packages(ignored_packages):
     cmd = "cargo package --allow-dirty --workspace"
     old_len = len(cmd)
