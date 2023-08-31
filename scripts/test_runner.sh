@@ -7,7 +7,7 @@ cd scripts/tests
 for file in *.py; do
     if [[ -f "$file" ]]; then
         echo "Running $file..."
-        python3 "$file"
+        python "$file"
     fi
 done
 
