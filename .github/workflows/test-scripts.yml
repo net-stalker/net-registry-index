@@ -20,6 +20,12 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Install Rust
+        run: rustup toolchain install stable --profile minimal
+
+      - name: Install cargo index took
+        run: cargo install cargo-index
+
       - name: Install Pylint, Pytest
         run: |
           pip install pylint pytest
