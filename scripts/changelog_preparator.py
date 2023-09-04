@@ -34,7 +34,7 @@ def move_log_out_of_comments(manifest_dir, file_name):
                     started_capturing_log = True
                     continue
 
-                if line == '<!-- [END AUTO UPDATE] -->\n':
+                if line == '<!-- [END AUTO UPDATE] -->\n' or line == '<!-- [END AUTO UPDATE] -->':
                     changelog.write(line)
                     started_capturing_log = False
                     continue
