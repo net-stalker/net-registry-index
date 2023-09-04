@@ -79,10 +79,10 @@ def main():
         raise RuntimeError("wrong number of args. 1 is required")
     manifest_dir = args[0]
     if check_if_correct(manifest_dir, "CHANGELOG.md"):
-        print("Isn't correct")
         move_log_out_of_comments(manifest_dir, "CHANGELOG.md")
-        return 1
-    print("Correct")
+        print("updated")
+        return 0
+    print("correct")
     return 0
 
 if __name__ == "__main__":
