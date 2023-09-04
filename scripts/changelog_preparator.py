@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# pylint: disable=unspecified-encoding
+# pylint: disable=unspecified-encoding, line-too-long
 """
 Module proving preparation for changelog updation by using update-file ci flow
 https://github.com/marketplace/actions/update-file
@@ -19,6 +19,21 @@ import sys
 # <!-- [END AUTO UPDATE] -->
 # INFO ABOUT CHANGES
 
+def check_if_correct(manifest_dir, file_name):
+    """A funciton which verify if the file has been previously updated"""
+    changelog_dir = os.path.join(manifest_dir, file_name)
+    with open(changelog_dir, 'r') as changelog:
+        started_capturing_log = False
+        for line in changelog:
+            if line == '<!-- Please keep comment here to allow auto-update -->\n':
+                started_capturing_log = True
+                continue
+            if started_capturing_log and line not in {'<!-- [END AUTO UPDATE] -->\n', '<!-- [END AUTO UPDATE] -->'}:
+                return 1
+            if started_capturing_log:
+                return 0
+    return 0
+
 def move_log_out_of_comments(manifest_dir, file_name):
     """A function for moving all the info out of comments"""
     changelog_dir = os.path.join(manifest_dir, file_name)
@@ -34,7 +49,7 @@ def move_log_out_of_comments(manifest_dir, file_name):
                     started_capturing_log = True
                     continue
 
-                if line == '<!-- [END AUTO UPDATE] -->\n':
+                if line in {'<!-- [END AUTO UPDATE] -->\n', '<!-- [END AUTO UPDATE] -->'}:
                     changelog.write(line)
                     started_capturing_log = False
                     continue
@@ -63,7 +78,12 @@ def main():
     if len(args) != 1:
         raise RuntimeError("wrong number of args. 1 is required")
     manifest_dir = args[0]
-    move_log_out_of_comments(manifest_dir, "CHANGELOG.md")
+    if check_if_correct(manifest_dir, "CHANGELOG.md"):
+        print("Isn't correct")
+        move_log_out_of_comments(manifest_dir, "CHANGELOG.md")
+        return 1
+    print("Correct")
+    return 0
 
 if __name__ == "__main__":
     main()
