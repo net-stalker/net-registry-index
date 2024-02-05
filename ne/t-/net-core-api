@@ -1,0 +1,1 @@
+{"name":"net-core-api","vers":"0.1.1-0d3a420","deps":[{"name":"ion-rs","req":"^0.18.1","features":[],"optional":false,"default_features":true,"target":null,"kind":"normal","registry":"https://github.com/rust-lang/crates.io-index","package":null}],"features":{},"cksum":"fadb6fb32bb20aeaaa6d853c67e71d022089efe65a69dd2207239c49616fb9d5","yanked":false,"links":null}
